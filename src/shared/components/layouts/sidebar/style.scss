@@ -1,0 +1,22 @@
+$main-color: #0ac486;
+$main-color-light: #abdfcd;
+$main-color-dark: #41a884;
+
+.item {
+  margin: 0px !important;
+  width: 100% !important;
+}
+.ant-menu-item {
+  @extend .item;
+  font-size: 24px;
+}
+
+.ant-menu-item-selected {
+  @extend .item;
+  background: $main-color !important;
+  color: white !important;
+}
+
+.ant-menu-item-active {
+  @extend .item;
+}

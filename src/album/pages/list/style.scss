@@ -1,0 +1,67 @@
+@import "/src/shared/themes/mixin.scss";
+$main-color: #0ac486;
+$main-color-light: #abdfcd;
+$main-color-dark: #41a884;
+
+.border {
+  border: none;
+  border-radius: 16px;
+}
+.user-avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8;
+  cursor: pointer;
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  .user-full-name {
+    color: $main-color;
+    text-decoration: underline;
+    margin-left: 8px;
+    &:hover {
+      color: $main-color-dark;
+    }
+  }
+}
+
+.ant-table {
+  height: 65vh;
+  overflow: auto;
+  .ant-table-thead th {
+    position: fixed;
+    background: $main-color !important;
+    padding: 12px !important;
+    color: white !important;
+  }
+  .ant-table-tbody {
+    td {
+      padding: 12px !important;
+    }
+    .student-table-action-container {
+      @include flex-space-around;
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.album-pagination {
+  .ant-pagination-item:hover {
+    background: rgb(226, 226, 226);
+    @extend .border;
+  }
+  .ant-pagination-item-active,
+  .ant-pagination-item-active:hover {
+    background: $main-color;
+    box-shadow: 2px 2px 4px 1px $main-color-light;
+    font-weight: bold;
+    @extend .border;
+    a {
+      color: white;
+    }
+  }
+}

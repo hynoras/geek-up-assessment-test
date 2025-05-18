@@ -1,10 +1,12 @@
 export const API = {
   TYPICODE: "https://jsonplaceholder.typicode.com",
-  UI_AVATAR: (hasQueries: boolean) => `https://ui-avatars.com/api/${hasQueries ? "?" : ""}`,
+  UI_AVATAR: (hasQueries: boolean) =>
+    `https://ui-avatars.com/api/${hasQueries ? "?" : ""}`,
   PARAMS: {
     PAGINATION: {
       DEFAULT_CURRENT_PAGE: 1,
-      DEFAULT_PAGE_SIZE: 10
-    }
+      DEFAULT_PAGE_SIZE: 20
+    },
+    BY_ID: (id: number) => `/${id}`
   }
 }

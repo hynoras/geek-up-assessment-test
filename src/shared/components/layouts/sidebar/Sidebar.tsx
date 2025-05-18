@@ -1,9 +1,9 @@
+import "./style.scss"
 import type { MenuProps } from "antd"
 import { Layout, Menu } from "antd"
 import { FileTextOutlined, UserOutlined } from "@ant-design/icons"
-import { useNavigate } from "react-router"
-import "./style.scss"
-import { useState } from "react"
+import { useLocation, useNavigate } from "react-router"
+import { useMemo, useState } from "react"
 
 type MenuItem = Required<MenuProps>["items"][number]
 
@@ -19,7 +19,7 @@ const items: MenuItem[] = [
     type: "divider"
   },
   {
-    key: "user",
+    key: "users",
     label: "Users",
     icon: <UserOutlined />
   },
@@ -34,15 +34,32 @@ const items: MenuItem[] = [
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const [collapsed, setCollapsed] = useState(false)
 
   const onClick: MenuProps["onClick"] = (e) => {
     navigate(`/${e.key}`)
   }
 
+  const selectedKeys = useMemo(() => {
+    if (location.pathname.startsWith("/albums")) return ["albums"]
+    if (location.pathname.startsWith("/users")) return ["users"]
+    return []
+  }, [location.pathname])
+
   return (
-    <Sider theme="light" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <Menu onClick={onClick} defaultSelectedKeys={["albums"]} mode="inline" items={items} />
+    <Sider
+      theme="light"
+      collapsible
+      collapsed={collapsed}
+      onCollapse={(value) => setCollapsed(value)}
+    >
+      <Menu
+        onClick={onClick}
+        defaultSelectedKeys={selectedKeys}
+        mode="inline"
+        items={items}
+      />
     </Sider>
   )
 }

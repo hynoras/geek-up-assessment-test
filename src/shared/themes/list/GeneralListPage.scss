@@ -7,7 +7,7 @@ $main-color-dark: #41a884;
   border: none;
   border-radius: 16px;
 }
-.user-avatar-wrapper {
+.user-inner-cell-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,7 +18,10 @@ $main-color-dark: #41a884;
     height: 32px;
     border-radius: 50%;
   }
-  .user-full-name {
+  .user-full-name,
+  .user-website,
+  .user-email,
+  .user-phone {
     color: $main-color;
     text-decoration: underline;
     margin-left: 8px;
@@ -29,8 +32,9 @@ $main-color-dark: #41a884;
 }
 
 .ant-table {
-  height: 65vh;
-  overflow: auto;
+  min-height: 65vh;
+  min-width: 80%;
+  overflow: hidden;
   .ant-table-thead th {
     position: fixed;
     background: $main-color !important;

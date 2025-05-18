@@ -1,0 +1,52 @@
+@import "/src/shared/themes/mixin.scss";
+@import "/src/shared/themes/text/GeneralText.scss";
+$main-color: #0ac486;
+$main-color-light: #abdfcd;
+$main-color-dark: #41a884;
+
+.show-album-page {
+  padding: 24px;
+  overflow: auto;
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .user-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      .user-email {
+        @include clickable-user-info;
+      }
+    }
+  }
+  .ant-table {
+    height: auto;
+    min-width: 100%;
+    overflow: hidden;
+    .ant-table-thead th {
+      background: $main-color !important;
+      padding: 12px !important;
+      color: white !important;
+    }
+    .ant-table-tbody {
+      td {
+        padding: 12px !important;
+      }
+      .student-table-action-container {
+        @include flex-space-around;
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

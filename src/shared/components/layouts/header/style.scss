@@ -1,11 +1,7 @@
 @import "/src/shared/themes/mixin.scss";
 
-.user-margin {
-  margin: 0 16px 0 8px !important;
-}
-
 .header-container {
-  position: sticky;
   background: white;
   height: 6.5vh;
+  width: 100%;
 }

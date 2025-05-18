@@ -4,16 +4,18 @@
   background: rgb(235, 235, 235);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .main-layout-container {
   display: flex;
   flex-direction: row;
   flex: 1;
-  overflow: hidden;
 }
 
 .main-layout-content-wrapper {
+  flex: 1;
+  padding: 24px;
+  min-width: 0;
   @include content;
 }

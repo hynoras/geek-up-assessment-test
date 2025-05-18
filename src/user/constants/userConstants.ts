@@ -9,7 +9,17 @@ export const USER = {
         `${hasParamsChain ? "&" : ""}name=${encodeURIComponent(name)}`,
       BY_BACKGROUND: (id: number, hasParamsChain: boolean) =>
         `${hasParamsChain ? "&" : ""}background=${getAvatarColor(id)}`,
-      BY_COLOR: (hasParamsChain: boolean) => `${hasParamsChain ? "&" : ""}color=fff`
+      BY_COLOR: (hasParamsChain: boolean) => `${hasParamsChain ? "&" : ""}color=fff`,
+      BY_ID: (id: number) => `${id}`
     }
+  },
+  KEY: {
+    USER: "user",
+    USER_PLURAL: "users",
+    NAME: "name",
+    AVATAR: "avatar",
+    EMAIL: "email",
+    PHONE: "phone",
+    WEBSITE: "website"
   }
 }

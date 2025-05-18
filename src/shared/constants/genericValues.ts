@@ -9,6 +9,7 @@ export const GENERIC = {
   },
   NONE: "None",
   KEY: {
+    ID: "id",
     ACTION: "action",
     CURRENT_PAGE: "currentPage",
     PAGE_SIZE: "pageSize"

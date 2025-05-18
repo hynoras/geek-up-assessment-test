@@ -1,5 +1,9 @@
 import { ALBUM } from "album/constants/albumConstants"
-import { AlbumDetail, AlbumWithUserDetail } from "album/models/dtos/albumDtos"
+import {
+  AlbumDetail,
+  AlbumWithUserDetail,
+  PhotoDetail
+} from "album/models/dtos/albumDtos"
 import { API } from "shared/constants/apiConstants"
 import { api } from "shared/utils/apiUtils"
 import { USER } from "user/constants/userConstants"
@@ -22,6 +26,43 @@ class AlbumService {
       }))
 
       return albumsWithUser
+    } catch (error) {
+      console.error("Error fetching album list:", error)
+      return undefined
+    }
+  }
+  async getAlbumById(id: number): Promise<AlbumDetail | undefined> {
+    try {
+      const response = await api.get<AlbumDetail>(
+        API.TYPICODE + ALBUM.ROUTES.API.BASE_PLURAL + API.PARAMS.BY_ID(id)
+      )
+      return response.data
+    } catch (error) {
+      console.error("Error fetching album list:", error)
+      return undefined
+    }
+  }
+  async getAlbumByUserId(id: number): Promise<AlbumDetail | undefined> {
+    try {
+      const response = await api.get<AlbumDetail>(
+        API.TYPICODE +
+          ALBUM.ROUTES.API.BASE_PLURAL +
+          ALBUM.ROUTES.API.BY_USER_ID(id, true)
+      )
+      return response.data
+    } catch (error) {
+      console.error("Error fetching album list:", error)
+      return undefined
+    }
+  }
+  async getPhotoByAlbumId(albumid: number): Promise<Array<PhotoDetail> | undefined> {
+    try {
+      const response = await api.get<Array<PhotoDetail>>(
+        API.TYPICODE +
+          ALBUM.ROUTES.API.PHOTO_PLURAL +
+          ALBUM.ROUTES.API.BY_ALBUM_ID(albumid, true)
+      )
+      return response.data
     } catch (error) {
       console.error("Error fetching album list:", error)
       return undefined

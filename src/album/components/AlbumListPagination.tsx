@@ -10,7 +10,11 @@ type AlbumListPaginationProps = {
   onChangePagination: ((page: number, pageSize: number) => void) | undefined
 }
 
-const StudentListPagination: React.FC<AlbumListPaginationProps> = ({ total, queryOptions, onChangePagination }) => {
+const AlbumListPagination: React.FC<AlbumListPaginationProps> = ({
+  total,
+  queryOptions,
+  onChangePagination
+}) => {
   return (
     <>
       <Pagination
@@ -28,4 +32,4 @@ const StudentListPagination: React.FC<AlbumListPaginationProps> = ({ total, quer
   )
 }
 
-export default StudentListPagination
+export default AlbumListPagination

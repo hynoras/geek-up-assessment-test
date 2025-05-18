@@ -1,0 +1,11 @@
+$main-color: #0ac486;
+$main-color-light: #abdfcd;
+$main-color-dark: #41a884;
+
+@mixin clickable-user-info {
+    color: $main-color;
+    text-decoration: underline;
+    &:hover {
+        color: $main-color-dark;
+    }
+}

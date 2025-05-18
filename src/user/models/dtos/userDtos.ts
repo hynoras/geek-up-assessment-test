@@ -3,3 +3,8 @@ export interface UserDetail {
   name: string
   email: string
 }
+
+export interface UserListWithDetail extends UserDetail {
+  phone: string
+  website: string
+}

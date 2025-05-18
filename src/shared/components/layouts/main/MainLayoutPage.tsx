@@ -1,5 +1,5 @@
+import "./MainLayoutPage.scss"
 import { Outlet } from "react-router"
-import "./style.scss"
 import Header from "shared/components/layouts/header/Header"
 import Sidebar from "shared/components/layouts/sidebar/Sidebar"
 import { Layout } from "antd"

@@ -3,9 +3,9 @@ $main-color-light: #abdfcd;
 $main-color-dark: #41a884;
 
 @mixin clickable-user-info {
-    color: $main-color;
-    text-decoration: underline;
-    &:hover {
-        color: $main-color-dark;
-    }
+  color: $main-color;
+  text-decoration: underline;
+  &:hover {
+    color: $main-color-dark;
+  }
 }

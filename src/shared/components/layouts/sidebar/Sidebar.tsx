@@ -1,13 +1,15 @@
-import "./style.scss"
+import "./Sidebar.scss"
 import type { MenuProps } from "antd"
-import { Layout, Menu } from "antd"
-import { FileTextOutlined, UserOutlined } from "@ant-design/icons"
+import { Grid, Layout, Drawer, Menu, FloatButton } from "antd"
+import { FileTextOutlined, UserOutlined, MenuOutlined } from "@ant-design/icons"
 import { useLocation, useNavigate } from "react-router"
 import { useMemo, useState } from "react"
 
 type MenuItem = Required<MenuProps>["items"][number]
 
 const { Sider } = Layout
+
+const { useBreakpoint } = Grid
 
 const items: MenuItem[] = [
   {
@@ -35,10 +37,15 @@ const items: MenuItem[] = [
 const Sidebar: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const screens = useBreakpoint()
+  const isMobile = !screens.md
+
+  const [drawerVisible, setDrawerVisible] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
 
   const onClick: MenuProps["onClick"] = (e) => {
     navigate(`/${e.key}`)
+    if (isMobile) setDrawerVisible(false)
   }
 
   const selectedKeys = useMemo(() => {
@@ -47,20 +54,44 @@ const Sidebar: React.FC = () => {
     return []
   }, [location.pathname])
 
+  const menu = (
+    <Menu
+      onClick={onClick}
+      defaultSelectedKeys={selectedKeys}
+      mode="inline"
+      items={items}
+    />
+  )
+
   return (
-    <Sider
-      theme="light"
-      collapsible
-      collapsed={collapsed}
-      onCollapse={(value) => setCollapsed(value)}
-    >
-      <Menu
-        onClick={onClick}
-        defaultSelectedKeys={selectedKeys}
-        mode="inline"
-        items={items}
-      />
-    </Sider>
+    <>
+      {isMobile ? (
+        <>
+          <FloatButton
+            className={"menu-float-button"}
+            icon={<MenuOutlined />}
+            onClick={() => setDrawerVisible(true)}
+            style={{ position: "fixed", top: 16, left: 16, zIndex: 1000 }}
+          />
+          <Drawer
+            placement="left"
+            open={drawerVisible}
+            onClose={() => setDrawerVisible(false)}
+          >
+            {menu}
+          </Drawer>
+        </>
+      ) : (
+        <Sider
+          theme="light"
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
+        >
+          {menu}
+        </Sider>
+      )}
+    </>
   )
 }
 

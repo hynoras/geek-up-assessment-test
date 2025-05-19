@@ -8,9 +8,11 @@ import { GENERIC } from "shared/constants/genericValues"
 import useAlbum from "album/hooks/useAlbum"
 import { ALBUM } from "album/constants/albumConstants"
 import { AlbumWithUserDetail } from "album/models/dtos/albumDtos"
-import { TableColumnsType, Button } from "antd"
+import { TableColumnsType, Button, Typography } from "antd"
 import { EyeOutlined } from "@ant-design/icons"
 import userService from "user/services/userService"
+
+const { Title } = Typography
 
 const AlbumListPage: React.FC = () => {
   const [paginationParams, setPaginationParams] = useSearchParams()
@@ -92,7 +94,7 @@ const AlbumListPage: React.FC = () => {
 
   return (
     <>
-      <p>Album List</p>
+      <Title level={1}>Album List</Title>
       <AlbumListTable
         albums={paginatedAlbums || GENERIC.NULL_VALUE.EMPTY.STRING}
         loading={isLoading}

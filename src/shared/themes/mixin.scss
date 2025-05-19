@@ -19,11 +19,16 @@
   justify-content: space-around;
 }
 
+@mixin flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 @mixin content {
   padding: 24px;
   margin: 16px;
   background: white;
   border-radius: 20px;
-  min-height: calc(95vh - 100px);
+  max-height: 90vh;
   overflow-y: auto;
 }

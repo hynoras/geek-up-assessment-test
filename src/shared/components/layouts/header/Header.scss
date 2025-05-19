@@ -3,5 +3,7 @@
 .header-container {
   background: white;
   height: 6.5vh;
-  width: 100%;
+  text-align: center;
+  align-items: center;
+  @include flex-space-between;
 }
